@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Black.Beard.Caching.UnitTests
 {
     [TestClass]
-    public class CacheUnitTest1
+    public class CacheUnitTest
     {
 
 

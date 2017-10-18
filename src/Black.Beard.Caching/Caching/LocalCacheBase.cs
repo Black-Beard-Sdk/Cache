@@ -29,11 +29,12 @@ namespace Bb.Caching
             this.cache = cache;
 
             if (concurrencyLevel <= 0)
-                concurrencyLevel = 10;
+                concurrencyLevel = Environment.ProcessorCount * 2;
+
             this._concurrencyLevel = concurrencyLevel;
 
             // scale locks objects on x items for best locking performance.
-            this._locks = new object[concurrencyLevel];
+            this._locks = new lockItem[concurrencyLevel];
             for (int i = 0; i < concurrencyLevel; i++)
             {
                 this._locks[i] = new lockItem();
@@ -62,20 +63,11 @@ namespace Bb.Caching
                 int lockNo = (hashcode & 0x7fffffff) % _concurrencyLevel;
                 Debug.Assert(lockNo >= 0 && lockNo < _concurrencyLevel);
 
-                var l = this._locks[lockNo] as lockItem;
+                var l = this._locks[lockNo];
                 lock (l._syncLock)
                 {
-                    l.Count++;
-                    Debug.Assert(l.Count == 1);
                     if (!GetValue(key, out value))
-                        try
-                        {
-                            SetValue(key, (value = new CacheValue()), policyName);
-                        }
-                        finally
-                        {
-                            l.Count--;
-                        }
+                        SetValue(key, (value = new CacheValue()), policyName);
 
                 }
 
@@ -149,7 +141,6 @@ namespace Bb.Caching
         private class lockItem
         {
             public volatile object _syncLock = new Object();
-            public int Count = 0;
         }
 
         /// <summary>
@@ -200,7 +191,7 @@ namespace Bb.Caching
         /// instance of the cache
         /// </summary>
         protected readonly object cache;
-        private readonly object[] _locks;
+        private readonly lockItem[] _locks;
         private readonly int _concurrencyLevel;
 
     }

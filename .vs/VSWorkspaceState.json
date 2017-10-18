@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Black.Beard.Caching",
+    "\\src\\Black.Beard.Caching.Runtime",
+    "\\src\\Black.Beard.Caching.Runtime\\Caching",
+    "\\src\\Black.Beard.Caching.UnitTests",
+    "\\src\\Black.Beard.Caching\\Caching"
+  ],
+  "SelectedNode": "\\src\\Black.Beard.Caching.UnitTests\\KeyUnitTest.cs",
+  "PreviewInSolutionExplorer": false
+}
