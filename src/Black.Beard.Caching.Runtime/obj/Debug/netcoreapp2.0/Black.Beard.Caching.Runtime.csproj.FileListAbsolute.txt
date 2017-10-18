@@ -1,0 +1,13 @@
+C:\github\Cache\src\Black.Beard.Caching.Runtime\bin\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.deps.json
+C:\github\Cache\src\Black.Beard.Caching.Runtime\bin\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.dll
+C:\github\Cache\src\Black.Beard.Caching.Runtime\bin\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.pdb
+C:\github\Cache\src\Black.Beard.Caching.Runtime\obj\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.csprojResolveAssemblyReference.cache
+C:\github\Cache\src\Black.Beard.Caching.Runtime\obj\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.csproj.CoreCompileInputs.cache
+C:\github\Cache\src\Black.Beard.Caching.Runtime\obj\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.AssemblyInfoInputs.cache
+C:\github\Cache\src\Black.Beard.Caching.Runtime\obj\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.AssemblyInfo.cs
+C:\github\Cache\src\Black.Beard.Caching.Runtime\obj\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.dll
+C:\github\Cache\src\Black.Beard.Caching.Runtime\obj\Debug\netcoreapp2.0\Black.Beard.Caching.Runtime.pdb
+C:\github\Cache\src\Black.Beard.Caching.Runtime\bin\Debug\netcoreapp2.0\Black.Beard.Caching.Contracts.dll
+C:\github\Cache\src\Black.Beard.Caching.Runtime\bin\Debug\netcoreapp2.0\Black.Beard.Caching.dll
+C:\github\Cache\src\Black.Beard.Caching.Runtime\bin\Debug\netcoreapp2.0\Black.Beard.Caching.pdb
+C:\github\Cache\src\Black.Beard.Caching.Runtime\bin\Debug\netcoreapp2.0\Black.Beard.Caching.Contracts.pdb

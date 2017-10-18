@@ -1,0 +1,9 @@
+C:\github\Cache\src\Black.Beard.Caching.Contracts\bin\Debug\netstandard2.0\Black.Beard.Caching.Contracts.deps.json
+C:\github\Cache\src\Black.Beard.Caching.Contracts\bin\Debug\netstandard2.0\Black.Beard.Caching.Contracts.dll
+C:\github\Cache\src\Black.Beard.Caching.Contracts\bin\Debug\netstandard2.0\Black.Beard.Caching.Contracts.pdb
+C:\github\Cache\src\Black.Beard.Caching.Contracts\obj\Debug\netstandard2.0\Black.Beard.Caching.Contracts.csprojResolveAssemblyReference.cache
+C:\github\Cache\src\Black.Beard.Caching.Contracts\obj\Debug\netstandard2.0\Black.Beard.Caching.Contracts.csproj.CoreCompileInputs.cache
+C:\github\Cache\src\Black.Beard.Caching.Contracts\obj\Debug\netstandard2.0\Black.Beard.Caching.Contracts.AssemblyInfoInputs.cache
+C:\github\Cache\src\Black.Beard.Caching.Contracts\obj\Debug\netstandard2.0\Black.Beard.Caching.Contracts.AssemblyInfo.cs
+C:\github\Cache\src\Black.Beard.Caching.Contracts\obj\Debug\netstandard2.0\Black.Beard.Caching.Contracts.dll
+C:\github\Cache\src\Black.Beard.Caching.Contracts\obj\Debug\netstandard2.0\Black.Beard.Caching.Contracts.pdb
