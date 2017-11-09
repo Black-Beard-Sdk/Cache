@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -80,9 +81,44 @@ namespace Bb.Caching
 
         /// <summary>
         /// Return the value for the specified key.        
+        /// if the cache not contains value, it is initialized with the return of fetcher method
         /// </summary>
         /// <param name="key">The key is the cache key</param>
         /// <param name="fetcher">The fetcher.</param>
+        /// <returns>cache value</returns>
+        public void Set(object key, object value, string policyName = null)
+        {
+
+            CacheValue _value;
+
+            if (!GetValue(key, out _value))
+            {
+
+                // scale locks objects on x items for best locking performance.
+                // Resolve lock index to use.
+                int hashcode = key.GetHashCode();
+                int lockNo = (hashcode & 0x7fffffff) % _concurrencyLevel;
+                Debug.Assert(lockNo >= 0 && lockNo < _concurrencyLevel);
+
+                var l = this._locks[lockNo];
+                lock (l._syncLock)
+                {
+                    if (!GetValue(key, out _value))
+                        SetValue(key, (_value = new CacheValue()), policyName);
+
+                }
+
+            }
+
+            _value.SetValue(value);
+
+        }
+
+
+        /// <summary>
+        /// Return the value for the specified key.        
+        /// </summary>
+        /// <param name="key">The key is the cache key</param>
         /// <returns>cache value</returns>
         public object Get(object key)
         {
@@ -96,6 +132,25 @@ namespace Bb.Caching
             return result;
         }
 
+        /// <summary>
+        /// Remove the value of the cache
+        /// </summary>
+        /// <param name="key">The key is the cache key</param>
+        /// <returns>cache value</returns>
+        public void Del(object key)
+        {
+
+            RemoveValue(key);
+
+        }
+
+        /// <summary>
+        /// Removes the value ov the cache.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected abstract void RemoveValue(object key);
+
 
         /// <summary>
         /// Gets the value for the specified key and region.
@@ -103,6 +158,7 @@ namespace Bb.Caching
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract bool GetValue(object key, out CacheValue value);
 
 
@@ -112,6 +168,7 @@ namespace Bb.Caching
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <param name="policyName">Name of the policy for duration .</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract void SetValue(object key, CacheValue value, string policyName = null);
 
         /// <summary>
@@ -177,6 +234,17 @@ namespace Bb.Caching
                         }
 
                 return this.value;
+
+            }
+
+            internal void SetValue(object value)
+            {
+
+                lock (_syncLock)
+                {
+                    this.value = value;
+                    this.intialized = true;
+                }
 
             }
 

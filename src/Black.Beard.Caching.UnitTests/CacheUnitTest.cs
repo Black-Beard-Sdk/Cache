@@ -23,7 +23,7 @@ namespace Black.Beard.Caching.UnitTests
             string key1 = "key1";
             int count = 0;
             object _lock = new object();
-            string expected = "test";            
+            string expected = "test";
             RuntimeLocalCache cache = CreateCache(new SystemClock());
 
             Func<object> fnc = () =>

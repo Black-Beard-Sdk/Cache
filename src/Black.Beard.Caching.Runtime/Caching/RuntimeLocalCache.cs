@@ -1,6 +1,7 @@
 ﻿using Bb.Caching;
 using Microsoft.Extensions.Caching.Memory;
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Black.Beard.Caching.Runtime
 {
@@ -31,6 +32,7 @@ namespace Black.Beard.Caching.Runtime
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override bool GetValue(object key, out CacheValue value)
         {
             var _value = (cache as IMemoryCache).Get(key);
@@ -38,12 +40,21 @@ namespace Black.Beard.Caching.Runtime
             return value != null;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected override void RemoveValue(object key)
+        {
+            (cache as IMemoryCache).Remove(key);            
+        }
+
+
+
         /// <summary>
         /// Sets the value.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <param name="policyName">Name of the policy.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void SetValue(object key, CacheValue value, string policyName = null)
         {
             var entry = (cache as IMemoryCache).CreateEntry(key);
